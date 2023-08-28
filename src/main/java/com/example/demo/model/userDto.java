@@ -3,7 +3,7 @@ package com.example.demo.model;
 /**
  * 会員クラス
  */
-public class user {
+public class userDto {
 
 	
 	/** 
