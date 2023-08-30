@@ -1,9 +1,9 @@
-package com.example.demo.model;
+package com.example.demo.dto;
 
 /**
  * 会員クラス
  */
-public class userDto {
+public class UserDto {
 
 	
 	/** 
