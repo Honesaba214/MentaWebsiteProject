@@ -1,5 +1,7 @@
 package com.example.demo.dto;
 
+import com.example.demo.model.User;
+
 /**
  * 会員クラス
  */
@@ -26,6 +28,15 @@ public class UserDto {
 	 */
 	private String userEmailAddress;
 	
+	public UserDto() {
+		
+	}
+	
+	
+	public UserDto(User user) {
+		this.userNumber = user.getUserNumber();
+		this.userName = user.getUserName();
+	}
 	
 	
 	public int getUserNumber() {
