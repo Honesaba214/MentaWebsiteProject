@@ -35,6 +35,13 @@ public class UserRestController {
 		return userDto;
 	}
 	
+	@GetMapping(value = "user/{userNumber}")
+	public UserDto getUser(int userNumber) {
+		User user = userService.findById(userNumber);
+		UserDto userDto = new UserDto(user);
+		return userDto;
+		
+	}
 	
 	
 }

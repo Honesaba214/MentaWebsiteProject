@@ -36,6 +36,11 @@ public class ItemRestController {
 		return itemDto;
 	}
 	
-	
+	@PostMapping(value = "item/{itemNumber}")
+	public ItemDto getItem(int itemNumber) {
+		Item item = itemService.findByItemId(itemNumber);
+		ItemDto itemDto = new ItemDto(item);
+		return itemDto;
+	}
 	
 }

@@ -23,4 +23,9 @@ public class ItemService {
 		itemRepository.save(item);
 	}
 
+	public Item findByItemId(int itemId) {
+		Item item = itemRepository.findById(itemId).get();
+		return item;
+	}
+	
 }

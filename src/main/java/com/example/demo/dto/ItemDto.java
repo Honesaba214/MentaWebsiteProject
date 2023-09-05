@@ -17,7 +17,9 @@ public class ItemDto {
 	/**
 	 * 商品コード
 	 */
-	private String itemCode;
+	private int itemCode;
+	
+	
 	
 	public ItemDto() {
 		
@@ -52,12 +54,12 @@ public class ItemDto {
 	}
 
 
-	public String getItemCode() {
+	public int getItemCode() {
 		return itemCode;
 	}
 
 
-	public void setItemCode(String itemCode) {
+	public void setItemCode(int itemCode) {
 		this.itemCode = itemCode;
 	}
 

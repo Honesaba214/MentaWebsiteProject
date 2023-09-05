@@ -27,7 +27,7 @@ public class Item {
 	/**
 	 * 商品コード
 	 */
-	private String itemCode;
+	private int itemCode;
 	
 	public Item() {
 		
@@ -62,12 +62,12 @@ public class Item {
 	}
 
 
-	public String getItemCode() {
+	public int getItemCode() {
 		return itemCode;
 	}
 
 
-	public void setItemCode(String itemCode) {
+	public void setItemCode(int itemCode) {
 		this.itemCode = itemCode;
 	}
 

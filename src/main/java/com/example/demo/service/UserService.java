@@ -23,5 +23,10 @@ public class UserService {
 	public void sava(User user) {
 		userRepository.save(user);
 	}
+	
+	public User findById(int id) {
+		User user = userRepository.findById(id).get();
+		return user;
+	}
 
 }
