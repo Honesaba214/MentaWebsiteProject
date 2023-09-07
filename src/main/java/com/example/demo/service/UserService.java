@@ -29,4 +29,9 @@ public class UserService {
 		return user;
 	}
 
+	public void deleteById(int id) {
+		userRepository.deleteById(id);
+	}
+	
+	
 }

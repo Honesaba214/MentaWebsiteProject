@@ -43,5 +43,9 @@ public class UserRestController {
 		
 	}
 	
+	@GetMapping(value = "user/del/{deleteUserNumber}")
+	public void getDeleteuser(int deleteUserNumber) {
+		userService.deleteById(deleteUserNumber);
+	}
 	
 }
