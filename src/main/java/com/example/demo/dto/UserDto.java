@@ -36,6 +36,8 @@ public class UserDto {
 	public UserDto(User user) {
 		this.userNumber = user.getUserNumber();
 		this.userName = user.getUserName();
+		this.userAddress = user.getUserAddress();
+		this.userEmailAddress = user.getUserEmailAddress();
 	}
 	
 	

@@ -28,4 +28,8 @@ public class ItemService {
 		return item;
 	}
 	
+	public void deleteById(int id) {
+		itemRepository.deleteById(id);
+	}
+	
 }

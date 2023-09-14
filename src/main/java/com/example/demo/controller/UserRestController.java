@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.service.UserService;
@@ -22,29 +24,32 @@ public class UserRestController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping(value = "user")
+	//リスト取得
+	@GetMapping(value = "list")
 	public List<User> userList(){
 		
 		return userService.findAll();
 	}
 	
+	//追加・更新
 	@PostMapping(value = "add")
 	public UserDto add(@RequestBody UserDto userDto ) {
 		User user = new User(userDto);
-		userService.sava(user);
+		userService.save(user);
 		return userDto;
 	}
 	
-	@GetMapping(value = "user/{userNumber}")
-	public UserDto getUser(int userNumber) {
+	//取得
+	@GetMapping(value = "user")
+	public UserDto getUser(@RequestParam int userNumber) {
 		User user = userService.findById(userNumber);
 		UserDto userDto = new UserDto(user);
 		return userDto;
 		
 	}
 	
-	@GetMapping(value = "user/del/{deleteUserNumber}")
-	public void getDeleteuser(int deleteUserNumber) {
+	@DeleteMapping(value = "user")
+	public void getDeleteUser(@RequestParam int deleteUserNumber) {
 		userService.deleteById(deleteUserNumber);
 	}
 	
