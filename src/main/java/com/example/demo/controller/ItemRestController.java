@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +35,29 @@ public class ItemRestController {
 	@PostMapping(value = "add")
 	public ItemDto add(@RequestBody ItemDto itemDto) {
 		Item item = new Item(itemDto);
+		
+		try {
+			if(StringUtils.isEmpty(item.getItemNumber())){
+				throw new Exception("itemNumberが入力されています。");
+			}
+			
+			itemService.sava(item);
+			return itemDto;
+			
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		/*
+		
+		if(StringUtils.isEmpty(item.getItemNumber())) {
+			System.out.println("itemNumber is empty." + item.getItemNumber());
+		}else {
+			itemService.sava(item);
+			return itemDto;
+		}
+		
+		*/
 		itemService.sava(item);
 		return itemDto;
 	}
@@ -45,7 +69,7 @@ public class ItemRestController {
 		return itemDto;
 	}
 	
-	@DeleteMapping(value = "del")
+	@DeleteMapping(value = "delitem")
 	public void getDeleteItem(@RequestParam int deleteItemNumber) {
 		itemService.deleteById(deleteItemNumber);
 	}

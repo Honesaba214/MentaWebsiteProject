@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.exception.UserNotFoundException;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 
@@ -24,8 +25,13 @@ public class UserService {
 		userRepository.save(user);
 	}
 	
-	public User findById(int id) {
-		User user = userRepository.findById(id).get();
+	public User findById(int id) throws UserNotFoundException{
+		User user = new User();
+		if(userRepository.existsById(id)) {
+			userRepository.findById(id).get();
+		}else {
+			throw new UserNotFoundException("User Id not found!");
+		}
 		return user;
 	}
 

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,10 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.service.UserService;
 import com.example.demo.dto.UserDto;
+import com.example.demo.exception.UserNotFoundException;
 import com.example.demo.model.User;
 
 
 @RestController
+@Validated
 @RequestMapping("/api")
 public class UserRestController {
 
@@ -41,11 +44,17 @@ public class UserRestController {
 	
 	//取得
 	@GetMapping(value = "user")
-	public UserDto getUser(@RequestParam int userNumber) {
-		User user = userService.findById(userNumber);
+	public UserDto getUser(@RequestParam ＠Valid @NotNull int userNumber)throws UserNotFoundException {
+		User user = new User();
+		try {
+			user = userService.findById(userNumber);
+			
+			
+		}catch(UserNotFoundException e){
+			System.out.println(e.getMessage());
+		}
 		UserDto userDto = new UserDto(user);
 		return userDto;
-		
 	}
 	
 	@DeleteMapping(value = "user")
