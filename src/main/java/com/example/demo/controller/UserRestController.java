@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.service.UserService;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+
 import com.example.demo.dto.UserDto;
 import com.example.demo.exception.UserNotFoundException;
 import com.example.demo.model.User;
@@ -44,7 +48,7 @@ public class UserRestController {
 	
 	//取得
 	@GetMapping(value = "user")
-	public UserDto getUser(@RequestParam ＠Valid @NotNull int userNumber)throws UserNotFoundException {
+	public UserDto getUser(@RequestParam @Valid @NotBlank int userNumber)throws UserNotFoundException {
 		User user = new User();
 		try {
 			user = userService.findById(userNumber);

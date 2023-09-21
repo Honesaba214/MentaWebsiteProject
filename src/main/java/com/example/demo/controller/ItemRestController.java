@@ -32,34 +32,19 @@ public class ItemRestController {
 		return itemService.findAll();
 	}
 	
+	@SuppressWarnings("finally")
 	@PostMapping(value = "add")
 	public ItemDto add(@RequestBody ItemDto itemDto) {
 		Item item = new Item(itemDto);
 		
 		try {
-			if(StringUtils.isEmpty(item.getItemNumber())){
-				throw new Exception("itemNumberが入力されています。");
-			}
-			
 			itemService.sava(item);
-			return itemDto;
 			
 		}catch(Exception e) {
 			System.out.println(e);
-		}
-		
-		/*
-		
-		if(StringUtils.isEmpty(item.getItemNumber())) {
-			System.out.println("itemNumber is empty." + item.getItemNumber());
-		}else {
-			itemService.sava(item);
+		}finally{
 			return itemDto;
 		}
-		
-		*/
-		itemService.sava(item);
-		return itemDto;
 	}
 	
 	@PostMapping(value = "getitem")

@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.persistence.Id;
 
 @Entity
@@ -27,6 +29,8 @@ public class Item {
 	/**
 	 * 商品コード
 	 */
+	@Min(value = 1)
+	@Max(value = 4)
 	private int itemCode;
 	
 	public Item() {
@@ -39,7 +43,6 @@ public class Item {
 		this.itemName = itemDto.getItemName();
 		this.itemCode = itemDto.getItemCode();
 	}
-	
 	
 	
 	public int getItemNumber() {
@@ -71,8 +74,13 @@ public class Item {
 		this.itemCode = itemCode;
 	}
 
-
-
+	/**
+	 * itemNumberが入力された時
+	 * @return true/false
+	 */
+	public boolean hasNumber() {
+		return this.itemNumber > 0 ? true : false;
+	}
 	
 	
 }

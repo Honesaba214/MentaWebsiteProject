@@ -19,8 +19,12 @@ public class ItemService {
 		return list;
 	}
 	
-	public void sava(Item item) {
-		itemRepository.save(item);
+	public void sava(Item item) throws Exception {
+		if(item.hasNumber()) {
+			throw new Exception("itemNumberが入力されています。");
+		}else {
+			itemRepository.save(item);
+		}	
 	}
 
 	public Item findByItemId(int itemId) {
@@ -31,5 +35,6 @@ public class ItemService {
 	public void deleteById(int id) {
 		itemRepository.deleteById(id);
 	}
+	
 	
 }
