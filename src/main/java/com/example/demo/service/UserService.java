@@ -28,7 +28,7 @@ public class UserService {
 	public User findById(int id) throws UserNotFoundException{
 		User user = new User();
 		if(userRepository.existsById(id)) {
-			userRepository.findById(id).get();
+			user = userRepository.findById(id).get();
 		}else {
 			throw new UserNotFoundException("User Id not found!");
 		}

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.exception.ItemNotFoundException;
 import com.example.demo.model.Item;
 import com.example.demo.repository.ItemRepository;
 
@@ -20,15 +21,24 @@ public class ItemService {
 	}
 	
 	public void sava(Item item) throws Exception {
+		itemRepository.save(item);
+		
+		/*
+		 * ItemNo.が入っていたらエラー処理
 		if(item.hasNumber()) {
 			throw new Exception("itemNumberが入力されています。");
 		}else {
 			itemRepository.save(item);
-		}	
+		}*/	
 	}
 
-	public Item findByItemId(int itemId) {
-		Item item = itemRepository.findById(itemId).get();
+	public Item findByItemId(int itemId) throws ItemNotFoundException{
+		Item item = new Item();
+		if(itemRepository.existsById(itemId)) {
+			item = itemRepository.findById(itemId).get();
+		}else {
+			throw new ItemNotFoundException("Item Id not found!!");
+		}
 		return item;
 	}
 	

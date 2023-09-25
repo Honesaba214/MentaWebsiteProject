@@ -2,6 +2,9 @@ package com.example.demo.dto;
 
 import com.example.demo.model.User;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
+
 /**
  * 会員クラス
  */
@@ -11,11 +14,13 @@ public class UserDto {
 	/** 
 	 * ユーザーNo
 	 */
+	@Min(1)
 	private int userNumber;
 	
 	/**
 	 * ユーザー名
 	 */
+	@Max(20)
 	private String userName;
 	
 	/**
@@ -26,6 +31,7 @@ public class UserDto {
 	/**
 	 * ユーザーメールアドレス
 	 */
+	@Email
 	private String userEmailAddress;
 	
 	public UserDto() {

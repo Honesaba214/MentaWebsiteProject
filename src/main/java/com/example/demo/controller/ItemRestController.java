@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.ItemDto;
+import com.example.demo.exception.ItemNotFoundException;
 import com.example.demo.model.Item;
 import com.example.demo.service.ItemService;
 
@@ -48,8 +49,13 @@ public class ItemRestController {
 	}
 	
 	@PostMapping(value = "getitem")
-	public ItemDto getItem(@RequestParam int itemNumber) {
-		Item item = itemService.findByItemId(itemNumber);
+	public ItemDto getItem(@RequestParam int itemNumber) throws ItemNotFoundException{
+		Item item = new Item();
+		try {
+			item = itemService.findByItemId(itemNumber);
+		}catch(ItemNotFoundException e){
+			throw e;
+		}
 		ItemDto itemDto = new ItemDto(item);
 		return itemDto;
 	}

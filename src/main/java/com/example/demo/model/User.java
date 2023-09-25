@@ -1,5 +1,8 @@
 package com.example.demo.model;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import com.example.demo.dto.UserDto;
 
 import jakarta.persistence.Entity;
@@ -93,5 +96,11 @@ public class User {
 		this.userEmailAddress = userEmailAddress;
 	}
 
+	
+	
+	public Map<String,Integer> testMap(){
+		Map<String,Integer> map = new LinkedHashMap<>();
+		return map;
+	}
 	
 }

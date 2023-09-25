@@ -9,7 +9,7 @@ public class ItemNotFoundException extends Exception{
 		this.errorCode = "404";
 	}
 	
-	public String geterrorCode() {
+	public String getErrorCode() {
 		return errorCode;
 	}
 	
