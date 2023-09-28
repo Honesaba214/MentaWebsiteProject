@@ -14,7 +14,6 @@ public class UserDto {
 	/** 
 	 * ユーザーNo
 	 */
-	@Min(1)
 	private int userNumber;
 	
 	/**

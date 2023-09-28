@@ -18,6 +18,8 @@ import com.example.demo.exception.ItemNotFoundException;
 import com.example.demo.model.Item;
 import com.example.demo.service.ItemService;
 
+import jakarta.validation.Valid;
+
 
 
 @RestController
@@ -48,8 +50,8 @@ public class ItemRestController {
 		}
 	}
 	
-	@PostMapping(value = "getitem")
-	public ItemDto getItem(@RequestParam int itemNumber) throws ItemNotFoundException{
+	@GetMapping(value = "getitem")
+	public ItemDto getItem(@RequestParam @Valid int itemNumber) throws ItemNotFoundException{
 		Item item = new Item();
 		try {
 			item = itemService.findByItemId(itemNumber);
