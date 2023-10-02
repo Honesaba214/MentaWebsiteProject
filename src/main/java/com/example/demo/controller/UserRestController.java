@@ -1,6 +1,11 @@
 package com.example.demo.controller;
 
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,6 +31,8 @@ import com.example.demo.model.User;
 @RequestMapping("/api")
 public class UserRestController {
 
+	public static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+	
 	@Autowired
 	private UserService userService;
 	
@@ -33,12 +40,13 @@ public class UserRestController {
 	@GetMapping(value = "list")
 	public List<User> userList(){
 		
+		logger.info("get list");
 		return userService.findAll();
 	}
 	
 	//追加・更新
 	@PostMapping(value = "add")
-	public UserDto add(@RequestBody UserDto userDto ) {
+	public UserDto add(@RequestBody @Valid UserDto userDto ) {
 		User user = new User(userDto);
 		userService.save(user);
 		return userDto;

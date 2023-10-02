@@ -19,7 +19,6 @@ public class UserDto {
 	/**
 	 * ユーザー名
 	 */
-	@Max(20)
 	private String userName;
 	
 	/**
