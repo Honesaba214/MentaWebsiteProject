@@ -7,8 +7,8 @@
     </appender>
     
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!-- fileでログファイル名の指定 -->
-        <file>/Users/yui/Documents/STS_workspace/log/application.log</file>
+        <!-- fileでログファイル名の指定 
+        <file>/Users/yui/Documents/STS_workspace/log/application.log</file>-->
         <!-- rollingPolicy はファイルの切り替えに伴う移動や名前の変更を行う -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 切り替えるときのログファイル名の指定 -->

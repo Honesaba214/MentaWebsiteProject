@@ -40,7 +40,7 @@ public class UserRestController {
 	@GetMapping(value = "list")
 	public List<User> userList(){
 		
-		logger.info("get list");
+		logger.error("get list");
 		return userService.findAll();
 	}
 	
