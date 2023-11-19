@@ -59,6 +59,7 @@ public class UserRestController {
 		try {
 			user = userService.findById(userNumber);
 		}catch(UserNotFoundException e){
+			System.out.println("aaaa");
 			throw e;
 		}
 		UserDto userDto = new UserDto(user);
