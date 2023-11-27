@@ -33,6 +33,11 @@ public class Item {
 	@Max(value = 4)
 	private int itemCode;
 	
+	/**
+	 * 商品価格
+	 */
+	private int itemPrice;
+
 	public Item() {
 		
 	}
@@ -42,6 +47,7 @@ public class Item {
 		this.itemNumber = itemDto.getItemNumber();
 		this.itemName = itemDto.getItemName();
 		this.itemCode = itemDto.getItemCode();
+		this.itemPrice = itemDto.getItemPrice();
 	}
 	
 	
@@ -74,6 +80,16 @@ public class Item {
 		this.itemCode = itemCode;
 	}
 
+	public int getItemPrice() {
+		return itemPrice;
+	}
+
+
+	public void setItemPrice(int itemPrice) {
+		this.itemPrice = itemPrice;
+	}
+
+	
 	/**
 	 * itemNumberが入力された時
 	 * @return true/false

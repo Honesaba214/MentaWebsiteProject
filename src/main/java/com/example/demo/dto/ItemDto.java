@@ -19,8 +19,20 @@ public class ItemDto {
 	 */
 	private int itemCode;
 	
+	private int itemPrice;
 	
 	
+	
+	public int getItemPrice() {
+		return itemPrice;
+	}
+
+
+	public void setItemPrice(int itemPrice) {
+		this.itemPrice = itemPrice;
+	}
+
+
 	public ItemDto() {
 		
 	}
@@ -30,6 +42,7 @@ public class ItemDto {
 		this.itemNumber = item.getItemNumber();
 		this.itemName = item.getItemName();
 		this.itemCode = item.getItemCode();
+		this.itemPrice = item.getItemPrice();
 	}
 	
 	
