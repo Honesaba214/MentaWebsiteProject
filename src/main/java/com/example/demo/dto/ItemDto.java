@@ -19,18 +19,10 @@ public class ItemDto {
 	 */
 	private int itemCode;
 	
+	/**
+	 * 商品価格
+	 */
 	private int itemPrice;
-	
-	
-	
-	public int getItemPrice() {
-		return itemPrice;
-	}
-
-
-	public void setItemPrice(int itemPrice) {
-		this.itemPrice = itemPrice;
-	}
 
 
 	public ItemDto() {
@@ -76,7 +68,15 @@ public class ItemDto {
 		this.itemCode = itemCode;
 	}
 
+	
+	public int getItemPrice() {
+		return itemPrice;
+	}
 
+
+	public void setItemPrice(int itemPrice) {
+		this.itemPrice = itemPrice;
+	}
 
 	
 	

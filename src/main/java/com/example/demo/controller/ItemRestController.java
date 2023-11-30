@@ -1,8 +1,11 @@
 package com.example.demo.controller;
 
+import java.lang.invoke.MethodHandles;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,12 +31,17 @@ import jakarta.validation.Valid;
 @CrossOrigin
 public class ItemRestController {
 
+	public static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+	
 	@Autowired
 	private ItemService itemService;
 	
+	private String callClass;
+	
 	@GetMapping(value = "list")
 	public List<Item> itemList(){
-		
+		callClass = MethodHandles.lookup().lookupClass().toString();
+		logger.error(callClass);
 		return itemService.findAll();
 	}
 	
