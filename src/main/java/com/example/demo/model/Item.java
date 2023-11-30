@@ -30,13 +30,13 @@ public class Item {
 	 * 商品コード
 	 */
 	@Min(value = 1)
-	@Max(value = 4)
 	private int itemCode;
 	
 	/**
 	 * 商品価格
+	 * @Param String
 	 */
-	private int itemPrice;
+	private String itemPrice;
 
 	public Item() {
 		
@@ -80,12 +80,12 @@ public class Item {
 		this.itemCode = itemCode;
 	}
 
-	public int getItemPrice() {
+	public String getItemPrice() {
 		return itemPrice;
 	}
 
 
-	public void setItemPrice(int itemPrice) {
+	public void setItemPrice(String itemPrice) {
 		this.itemPrice = itemPrice;
 	}
 

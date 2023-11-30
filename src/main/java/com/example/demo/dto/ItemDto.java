@@ -22,7 +22,7 @@ public class ItemDto {
 	/**
 	 * 商品価格
 	 */
-	private int itemPrice;
+	private String itemPrice;
 
 
 	public ItemDto() {
@@ -69,12 +69,12 @@ public class ItemDto {
 	}
 
 	
-	public int getItemPrice() {
+	public String getItemPrice() {
 		return itemPrice;
 	}
 
 
-	public void setItemPrice(int itemPrice) {
+	public void setItemPrice(String itemPrice) {
 		this.itemPrice = itemPrice;
 	}
 
