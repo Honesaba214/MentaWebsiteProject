@@ -23,6 +23,8 @@ public class ItemDto {
 	 * 商品価格
 	 */
 	private String itemPrice;
+	
+
 
 
 	public ItemDto() {

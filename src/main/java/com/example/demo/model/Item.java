@@ -37,6 +37,11 @@ public class Item {
 	 * @Param String
 	 */
 	private String itemPrice;
+	
+	/**
+	 * 画像パス
+	 */
+	private String itemPath;
 
 	public Item() {
 		
@@ -90,6 +95,16 @@ public class Item {
 	}
 
 	
+	public String getItemPath() {
+		return itemPath;
+	}
+
+
+	public void setItemPath(String itemPath) {
+		this.itemPath = itemPath;
+	}
+
+
 	/**
 	 * itemNumberが入力された時
 	 * @return true/false

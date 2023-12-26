@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.dto.ItemDto;
 import com.example.demo.exception.ItemNotFoundException;
@@ -51,7 +53,7 @@ public class ItemRestController {
 		Item item = new Item(itemDto);
 		
 		try {
-			itemService.sava(item);
+			itemService.save(item);
 			
 		}catch(Exception e) {
 			System.out.println(e);
@@ -76,5 +78,7 @@ public class ItemRestController {
 	public void getDeleteItem(@RequestParam int deleteItemNumber) {
 		itemService.deleteById(deleteItemNumber);
 	}
+	
+	
 	
 }

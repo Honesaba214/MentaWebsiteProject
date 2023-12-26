@@ -20,7 +20,7 @@ public class ItemService {
 		return list;
 	}
 	
-	public void sava(Item item) throws Exception {
+	public void save(Item item) throws Exception {
 		itemRepository.save(item);
 		
 		/*
@@ -45,6 +45,5 @@ public class ItemService {
 	public void deleteById(int id) {
 		itemRepository.deleteById(id);
 	}
-	
 	
 }
