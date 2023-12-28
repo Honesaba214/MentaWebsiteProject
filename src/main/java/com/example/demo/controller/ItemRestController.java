@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.io.FileNotFoundException;
 import java.lang.invoke.MethodHandles;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -79,6 +80,10 @@ public class ItemRestController {
 		itemService.deleteById(deleteItemNumber);
 	}
 	
+	@PostMapping(value = "upload")
+	public void upload(@RequestParam("file") MultipartFile file) throws FileNotFoundException{
+		itemService.upload(file);
+	}
 	
 	
 }
