@@ -12,7 +12,7 @@
         <!-- rollingPolicy はファイルの切り替えに伴う移動や名前の変更を行う -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 切り替えるときのログファイル名の指定 -->
-            <fileNamePattern>.{catalina.home}/log/%d{yyyyMM,aux}/application-%d{yyyyMMdd}.log</fileNamePattern>
+            <fileNamePattern>log/%d{yyyyMM,aux}/application-%d{yyyyMMdd}.log</fileNamePattern>
         </rollingPolicy>
         <encoder>
             <charset>UTF-8</charset>

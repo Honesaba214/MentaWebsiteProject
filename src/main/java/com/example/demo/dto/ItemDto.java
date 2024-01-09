@@ -24,7 +24,10 @@ public class ItemDto {
 	 */
 	private String itemPrice;
 	
-
+	/**
+	 * 画像パス
+	 */
+	private String itemPath;
 
 
 	public ItemDto() {
@@ -37,6 +40,7 @@ public class ItemDto {
 		this.itemName = item.getItemName();
 		this.itemCode = item.getItemCode();
 		this.itemPrice = item.getItemPrice();
+		this.itemPath = item.getItemPath();
 	}
 	
 	
@@ -78,6 +82,16 @@ public class ItemDto {
 
 	public void setItemPrice(String itemPrice) {
 		this.itemPrice = itemPrice;
+	}
+
+
+	public String getItemPath() {
+		return itemPath;
+	}
+
+
+	public void setItemPath(String itemPath) {
+		this.itemPath = itemPath;
 	}
 
 	

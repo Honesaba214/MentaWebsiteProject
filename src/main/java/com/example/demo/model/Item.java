@@ -11,7 +11,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.persistence.Id;
 
 @Entity
-@Table(name = "`item`")
+//@Table(name = "`ITEM`")
 public class Item {
 
 	/** 
@@ -53,6 +53,7 @@ public class Item {
 		this.itemName = itemDto.getItemName();
 		this.itemCode = itemDto.getItemCode();
 		this.itemPrice = itemDto.getItemPrice();
+		this.itemPath = itemDto.getItemPath();
 	}
 	
 	

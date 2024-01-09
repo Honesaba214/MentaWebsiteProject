@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.demo.dto.ItemDto;
 import com.example.demo.exception.ItemNotFoundException;
 import com.example.demo.model.Item;
 import com.example.demo.repository.ItemRepository;
@@ -53,7 +54,7 @@ public class ItemService {
 	
 	public void upload(MultipartFile file) {
 		try {
-			String path = "/Users/yui/Documents/STS_workspace/websiteproject/file";
+			String path = "/Users/yui/Documents/STS_workspace/websiteproject/file/";
 			String uuid = java.util.UUID.randomUUID().toString();
 			String file_name = uuid + "_" + file.getOriginalFilename();
 			File uploadFile = new File(path + file_name);
@@ -65,6 +66,11 @@ public class ItemService {
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public String getItemPhotoPath(ItemDto itemDto) {
+		Item item = new Item(itemDto);
+		return item.getItemPath();
 	}
 	
 }
