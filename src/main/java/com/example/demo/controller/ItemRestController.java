@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
-import java.io.FileNotFoundException;
 import java.lang.invoke.MethodHandles;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.slf4j.Logger;
@@ -80,9 +80,23 @@ public class ItemRestController {
 		itemService.deleteById(deleteItemNumber);
 	}
 	
+	
 	@PostMapping(value = "upload")
-	public void upload(@RequestParam("file") MultipartFile file) throws FileNotFoundException{
-		itemService.upload(file);
+	public void upload(@RequestParam @Valid int itemNumber,@RequestParam("file") MultipartFile file) throws Exception{
+		
+		String itemPath = itemService.upload(file);
+		
+		Item item = itemService.findByItemId(itemNumber);
+		
+		/* findbyitemidで存在チェック行っているので不要？
+		if(Objects.isNull(item)) {
+			logger.error(callClass);
+			throw new Exception("該当するnumberはありません。");
+		}
+		*/
+		item.setItemPath(itemPath);
+		
+		itemService.save(item);
 	}
 	
 	

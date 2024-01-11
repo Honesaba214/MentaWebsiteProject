@@ -52,12 +52,19 @@ public class ItemService {
 		itemRepository.deleteById(id);
 	}
 	
-	public void upload(MultipartFile file) {
+	@SuppressWarnings("finally")
+	public String upload(MultipartFile file) {
+		String path = null;
+		String uuid = null;
+		String file_name = null;
+		String filePath = null;
+		
 		try {
-			String path = "/Users/yui/Documents/STS_workspace/websiteproject/file/";
-			String uuid = java.util.UUID.randomUUID().toString();
-			String file_name = uuid + "_" + file.getOriginalFilename();
-			File uploadFile = new File(path + file_name);
+			path = "/Users/yui/Documents/STS_workspace/websiteproject/file/";
+			uuid = java.util.UUID.randomUUID().toString();
+			file_name = uuid + "_" + file.getOriginalFilename();
+			filePath = path + file_name;
+			File uploadFile = new File(filePath);
 			FileOutputStream fos = new FileOutputStream(uploadFile);
 			fos.write(file.getBytes());
 			fos.close();
@@ -65,12 +72,9 @@ public class ItemService {
 			e.printStackTrace();
 		}catch(IOException e) {
 			e.printStackTrace();
+		}finally{
+			return filePath;
 		}
-	}
-	
-	public String getItemPhotoPath(ItemDto itemDto) {
-		Item item = new Item(itemDto);
-		return item.getItemPath();
 	}
 	
 }
