@@ -102,11 +102,18 @@ public class ItemRestController {
 	 * @throws Exception
 	 */
 	@PostMapping(value = "upload")
-	public void upload(@RequestParam @Valid int itemNumber,@RequestParam("file") MultipartFile file) throws Exception{
+	public ItemDto upload(@RequestParam @Valid int itemNumber,@RequestParam("file") MultipartFile file) throws Exception{
+
+		Item item = new Item();
 		String itemPath = itemService.upload(file);
-		Item item = itemService.findByItemId(itemNumber);
+		item = itemService.findByItemId(itemNumber);
 		item.setItemPath(itemPath);
 		itemService.save(item);
+		
+		ItemDto itemDto = new ItemDto(item);
+		
+		//画面側に返却
+		return itemDto;
 	}
 	
 	
