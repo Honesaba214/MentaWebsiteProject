@@ -40,14 +40,21 @@ public class ItemRestController {
 	private ItemService itemService;
 	
 	private String callClass;
-	
+	/**
+	 * 
+	 * @return
+	 */
 	@GetMapping(value = "list")
 	public List<Item> itemList(){
 		callClass = MethodHandles.lookup().lookupClass().toString();
 		logger.error(callClass);
 		return itemService.findAll();
 	}
-	
+	/**
+	 * 
+	 * @param itemDto
+	 * @return
+	 */
 	@SuppressWarnings("finally")
 	@PostMapping(value = "add")
 	public ItemDto add(@RequestBody ItemDto itemDto) {
@@ -62,7 +69,12 @@ public class ItemRestController {
 			return itemDto;
 		}
 	}
-	
+	/**
+	 * 
+	 * @param itemNumber
+	 * @return
+	 * @throws ItemNotFoundException
+	 */
 	@GetMapping(value = "getitem")
 	public ItemDto getItem(@RequestParam @Valid int itemNumber) throws ItemNotFoundException{
 		Item item = new Item();
@@ -74,28 +86,26 @@ public class ItemRestController {
 		ItemDto itemDto = new ItemDto(item);
 		return itemDto;
 	}
-	
+	/**
+	 * 
+	 * @param deleteItemNumber
+	 */
 	@DeleteMapping(value = "delitem")
 	public void getDeleteItem(@RequestParam int deleteItemNumber) {
 		itemService.deleteById(deleteItemNumber);
 	}
 	
-	
+	/**
+	 * 
+	 * @param itemNumber
+	 * @param file
+	 * @throws Exception
+	 */
 	@PostMapping(value = "upload")
 	public void upload(@RequestParam @Valid int itemNumber,@RequestParam("file") MultipartFile file) throws Exception{
-		
 		String itemPath = itemService.upload(file);
-		
 		Item item = itemService.findByItemId(itemNumber);
-		
-		/* findbyitemidで存在チェック行っているので不要？
-		if(Objects.isNull(item)) {
-			logger.error(callClass);
-			throw new Exception("該当するnumberはありません。");
-		}
-		*/
 		item.setItemPath(itemPath);
-		
 		itemService.save(item);
 	}
 	

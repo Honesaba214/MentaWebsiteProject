@@ -51,7 +51,7 @@ public class Item {
 	public Item(ItemDto itemDto) {
 		this.itemNumber = itemDto.getItemNumber();
 		this.itemName = itemDto.getItemName();
-		this.itemCode = itemDto.getItemCode();
+		this.itemCode = Integer.parseInt(itemDto.getItemCode());
 		this.itemPrice = itemDto.getItemPrice();
 		this.itemPath = itemDto.getItemPath();
 	}

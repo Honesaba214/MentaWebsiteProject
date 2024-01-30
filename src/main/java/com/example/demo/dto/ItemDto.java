@@ -17,7 +17,7 @@ public class ItemDto {
 	/**
 	 * 商品コード
 	 */
-	private int itemCode;
+	private String itemCode;
 	
 	/**
 	 * 商品価格
@@ -38,7 +38,7 @@ public class ItemDto {
 	public ItemDto(Item item) {
 		this.itemNumber = item.getItemNumber();
 		this.itemName = item.getItemName();
-		this.itemCode = item.getItemCode();
+		this.itemCode = String.valueOf(item.getItemCode());
 		this.itemPrice = item.getItemPrice();
 		this.itemPath = item.getItemPath();
 	}
@@ -65,12 +65,12 @@ public class ItemDto {
 	}
 
 
-	public int getItemCode() {
+	public String getItemCode() {
 		return itemCode;
 	}
 
 
-	public void setItemCode(int itemCode) {
+	public void setItemCode(String itemCode) {
 		this.itemCode = itemCode;
 	}
 
