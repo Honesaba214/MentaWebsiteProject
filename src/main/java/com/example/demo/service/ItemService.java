@@ -26,16 +26,8 @@ public class ItemService {
 		return list;
 	}
 	
-	public void save(Item item) throws Exception {
-		itemRepository.save(item);
-		
-		/*
-		 * ItemNo.が入っていたらエラー処理
-		if(item.hasNumber()) {
-			throw new Exception("itemNumberが入力されています。");
-		}else {
-			itemRepository.save(item);
-		}*/	
+	public Item save(Item item) throws Exception {
+		return itemRepository.save(item);
 	}
 
 	public Item findByItemId(int itemId) throws ItemNotFoundException{
@@ -60,7 +52,7 @@ public class ItemService {
 		String filePath = null;
 		
 		try {
-			path = "/Users/yui/Documents/STS_workspace/websiteproject/file/";
+			path = "/Users/kiuchi_tarou/projects/MentaWebsiteProject/file/";
 			uuid = java.util.UUID.randomUUID().toString();
 			file_name = uuid + "_" + file.getOriginalFilename();
 			filePath = path + file_name;

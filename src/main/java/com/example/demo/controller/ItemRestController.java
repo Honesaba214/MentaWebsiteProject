@@ -61,12 +61,11 @@ public class ItemRestController {
 		Item item = new Item(itemDto);
 		
 		try {
-			itemService.save(item);
+			return new ItemDto(itemService.save(item));
 			
 		}catch(Exception e) {
 			System.out.println(e);
-		}finally{
-			return itemDto;
+			return new ItemDto(item);
 		}
 	}
 	/**
